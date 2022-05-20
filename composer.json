@@ -18,6 +18,7 @@
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/twig": "^2.12|^3.0"
     },
+    "require-dev": {},
     "config": {
         "allow-plugins": {
             "composer/package-versions-deprecated": true,
