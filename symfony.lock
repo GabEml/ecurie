@@ -183,7 +183,7 @@
         ]
     },
     "symfony/form": {
-        "version": "v5.4.8"
+        "version": "v5.4.9"
     },
     "symfony/framework-bundle": {
         "version": "5.4",
@@ -256,7 +256,7 @@
         "version": "v5.4.8"
     },
     "symfony/property-info": {
-        "version": "v5.4.7"
+        "version": "v5.4.9"
     },
     "symfony/proxy-manager-bridge": {
         "version": "v5.4.6"
@@ -293,13 +293,13 @@
         "version": "v5.4.8"
     },
     "symfony/security-csrf": {
-        "version": "v5.4.3"
+        "version": "v5.4.9"
     },
     "symfony/security-guard": {
-        "version": "v5.4.3"
+        "version": "v5.4.9"
     },
     "symfony/security-http": {
-        "version": "v5.4.8"
+        "version": "v5.4.9"
     },
     "symfony/service-contracts": {
         "version": "v2.5.1"
