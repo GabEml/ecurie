@@ -31,19 +31,19 @@ class Healthy
      * @ORM\ManyToOne(targetEntity=PlanningHealthy::class)
      * @ORM\JoinColumn(nullable=false)
      */
-    private $id_date;
+    private $date;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class)
      * @ORM\JoinColumn(nullable=false)
      */
-    private $id_user;
+    private $user;
 
     /**
      * @ORM\ManyToOne(targetEntity=Horse::class)
      * @ORM\JoinColumn(nullable=false)
      */
-    private $id_horse;
+    private $horse;
 
     public function getId(): ?int
     {
@@ -74,38 +74,38 @@ class Healthy
         return $this;
     }
 
-    public function getIdDate(): ?PlanningHealthy
+    public function getDate(): ?PlanningHealthy
     {
-        return $this->id_date;
+        return $this->date;
     }
 
-    public function setIdDate(?PlanningHealthy $id_date): self
+    public function setDate(?PlanningHealthy $date): self
     {
-        $this->id_date = $id_date;
+        $this->date = $date;
 
         return $this;
     }
 
-    public function getIdUser(): ?User
+    public function getUser(): ?User
     {
-        return $this->id_user;
+        return $this->user;
     }
 
-    public function setIdUser(?User $id_user): self
+    public function setUser(?User $user): self
     {
-        $this->id_user = $id_user;
+        $this->user = $user;
 
         return $this;
     }
 
-    public function getIdHorse(): ?Horse
+    public function getHorse(): ?Horse
     {
-        return $this->id_horse;
+        return $this->horse;
     }
 
-    public function setIdHorse(?Horse $id_horse): self
+    public function setHorse(?Horse $horse): self
     {
-        $this->id_horse = $id_horse;
+        $this->horse = $horse;
 
         return $this;
     }

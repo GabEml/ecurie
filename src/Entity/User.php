@@ -51,7 +51,7 @@ class User
      * @ORM\ManyToOne(targetEntity=Role::class)
      * @ORM\JoinColumn(nullable=false)
      */
-    private $id_role;
+    private $role;
 
     public function getId(): ?int
     {
@@ -130,14 +130,14 @@ class User
         return $this;
     }
 
-    public function getIdRole(): ?Role
+    public function getRole(): ?Role
     {
-        return $this->id_role;
+        return $this->role;
     }
 
-    public function setIdRole(?Role $id_role): self
+    public function setRole(?Role $role): self
     {
-        $this->id_role = $id_role;
+        $this->role = $role;
 
         return $this;
     }

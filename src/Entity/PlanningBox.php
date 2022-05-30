@@ -31,13 +31,13 @@ class PlanningBox
      * @ORM\ManyToOne(targetEntity=Box::class)
      * @ORM\JoinColumn(nullable=false)
      */
-    private $id_box;
+    private $box;
 
     /**
      * @ORM\ManyToOne(targetEntity=Horse::class)
      * @ORM\JoinColumn(nullable=false)
      */
-    private $id_horse;
+    private $horse;
 
     public function getId(): ?int
     {
@@ -68,26 +68,26 @@ class PlanningBox
         return $this;
     }
 
-    public function getIdBox(): ?Box
+    public function getBox(): ?Box
     {
-        return $this->id_box;
+        return $this->box;
     }
 
-    public function setIdBox(?Box $id_box): self
+    public function setBox(?Box $box): self
     {
-        $this->id_box = $id_box;
+        $this->box = $box;
 
         return $this;
     }
 
-    public function getIdHorse(): ?Horse
+    public function getHorse(): ?Horse
     {
-        return $this->id_horse;
+        return $this->horse;
     }
 
-    public function setIdHorse(?Horse $id_horse): self
+    public function setHorse(?Horse $horse): self
     {
-        $this->id_horse = $id_horse;
+        $this->horse = $horse;
 
         return $this;
     }
