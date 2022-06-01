@@ -2,7 +2,7 @@
 
 namespace App\EventSubscriber;
 
-use App\Repository\BookingRepository;
+use App\Repository\PlanningBoxRepository;
 use CalendarBundle\CalendarEvents;
 use CalendarBundle\Entity\Event;
 use CalendarBundle\Event\CalendarEvent;
@@ -11,14 +11,14 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class CalendarSubscriber implements EventSubscriberInterface
 {
-    private $bookingRepository;
+    private $planningBoxRepository;
     private $router;
 
     public function __construct(
-        BookingRepository $bookingRepository,
+        PlanningBoxRepository $planningBoxRepository,
         UrlGeneratorInterface $router
     ) {
-        $this->bookingRepository = $bookingRepository;
+        $this->planningBoxRepository = $planningBoxRepository;
         $this->router = $router;
     }
 
@@ -37,21 +37,21 @@ class CalendarSubscriber implements EventSubscriberInterface
 
         // Modify the query to fit to your entity and needs
         // Change booking.beginAt by your start date property
-        $bookings = $this->bookingRepository
-            ->createQueryBuilder('booking')
-            ->where('booking.beginAt BETWEEN :start and :end OR booking.endAt BETWEEN :start and :end')
+        $plannings = $this->planningBoxRepository
+            ->createQueryBuilder('planning_box')
+            ->where('planning_box.date_debut BETWEEN :start and :end OR planning_box.date_fin BETWEEN :start and :end')
             ->setParameter('start', $start->format('Y-m-d H:i:s'))
             ->setParameter('end', $end->format('Y-m-d H:i:s'))
             ->getQuery()
             ->getResult()
         ;
 
-        foreach ($bookings as $booking) {
+        foreach ($plannings as $planning) {
             // this create the events with your data (here booking data) to fill calendar
-            $bookingEvent = new Event(
-                $booking->getTitle(),
-                $booking->getBeginAt(),
-                $booking->getEndAt() // If the end date is null or not defined, a all day event is created.
+            $planningBoxEvent = new Event(
+                $planning->getTitle(),
+                $planning->getBeginAt(),
+                $planning->getEndAt() // If the end date is null or not defined, a all day event is created.
             );
 
             /*
@@ -61,19 +61,19 @@ class CalendarSubscriber implements EventSubscriberInterface
              * and: https://github.com/fullcalendar/fullcalendar/blob/master/src/core/options.ts
              */
 
-            $bookingEvent->setOptions([
+            $planningBoxEvent->setOptions([
                 'backgroundColor' => 'red',
                 'borderColor' => 'red',
             ]);
-            $bookingEvent->addOption(
+            $planningBoxEvent->addOption(
                 'url',
-                $this->router->generate('app_booking_show', [
-                    'id' => $booking->getId(),
+                $this->router->generate('app_profil', [
+                    'id' => $planning->getId(),
                 ])
             );
 
             // finally, add the event to the CalendarEvent to fill the calendar
-            $calendar->addEvent($bookingEvent);
+            $calendar->addEvent($planningBoxEvent);
         }
     }
 }
